@@ -14,6 +14,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_wrapper, MainFragment()).commitNow()
+            .replace(R.id.activity_main_fragment_wrapper, MainFragment()).commitNow()
+
+        activity_main_add_fab.setOnClickListener {
+            println("Click Floating Action BUtton")
+        }
     }
 }

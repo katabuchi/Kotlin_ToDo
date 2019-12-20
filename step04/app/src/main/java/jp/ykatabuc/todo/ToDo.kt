@@ -13,7 +13,8 @@ interface ToDoRepository {
 data class ToDo(
     val id: Int,
     val title: String,
-    val text: String)
+    val text: String,
+    var isCheck: Boolean = false)
 
 interface UseCase {
     fun getAllToDo(): List<ToDo>

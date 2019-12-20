@@ -5,11 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.cell_todo.view.*
 
-class ToDoViewAdapter(private val context: Context) : RecyclerView.Adapter<ToDoViewHolder>() {
+class ToDoViewAdapter(
+    private val context: Context,
+    private val onClick: (item: ToDo) -> Unit
+) : RecyclerView.Adapter<ToDoViewHolder>() {
 
     private var todoList: List<ToDo> = listOf()
 
@@ -20,9 +24,14 @@ class ToDoViewAdapter(private val context: Context) : RecyclerView.Adapter<ToDoV
 
     override fun onBindViewHolder(holder: ToDoViewHolder, position: Int) {
         val item = todoList[position]
+        val context = holder.itemView.context
 
+        // タイトルとテキストを設定
         holder.titleTv.text = item.title
         holder.textTv.text = item.text
+
+        // リスナー設定
+        holder.itemView.setOnClickListener { onClick.invoke(item) }
     }
 
     fun updateItems(newItems: List<ToDo>) {
