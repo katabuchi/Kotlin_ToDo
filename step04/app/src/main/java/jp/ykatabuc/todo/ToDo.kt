@@ -7,9 +7,6 @@ interface ToDoRepository {
     fun editToDo(id: Int, todo: ToDo)
 }
 
-/**
- * ToDoDomainクラス
- */
 data class ToDo(
     val id: Int,
     val title: String,

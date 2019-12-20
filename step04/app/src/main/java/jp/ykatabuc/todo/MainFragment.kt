@@ -13,11 +13,9 @@ import kotlinx.android.synthetic.main.fragment_main.*
 class MainFragment : Fragment() {
 
     private val onClickItem: (ToDo) -> Unit = {}
-
     private val adapter: ToDoViewAdapter by lazy {
         ToDoViewAdapter(requireContext(), onClickItem)
     }
-
     private val viewModel: MainViewModel by lazy {
         ViewModelProvider(this).get(MainViewModel::class.java)
     }
